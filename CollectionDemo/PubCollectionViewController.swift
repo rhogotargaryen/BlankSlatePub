@@ -8,7 +8,7 @@
 import UIKit
 
 
-class CollectionViewController: UICollectionViewController {
+class PubCollectionViewController: UICollectionViewController {
     
     var feedImgCache = Dictionary<URL, UIImage>()
     
@@ -37,7 +37,7 @@ class CollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath);
         
         // Setup Cell
-        if let articleCell: CollectionViewCell = cell as? CollectionViewCell{
+        if let articleCell: PubCollectionViewCell = cell as? PubCollectionViewCell{
             articleCell.titleLabel.text = "Lorum Ipsom"
             articleCell.authorNameLabel.text = "John"
             articleCell.previewTextLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"

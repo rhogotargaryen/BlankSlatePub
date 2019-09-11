@@ -12,8 +12,8 @@
 		A7A8E13421ACB09200CF37F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7A8E13221ACB09200CF37F6 /* Main.storyboard */; };
 		A7A8E13621ACB09300CF37F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7A8E13521ACB09300CF37F6 /* Assets.xcassets */; };
 		A7A8E13921ACB09300CF37F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7A8E13721ACB09300CF37F6 /* LaunchScreen.storyboard */; };
-		A7A8E14B21ACB0CA00CF37F6 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A8E14A21ACB0CA00CF37F6 /* CollectionViewController.swift */; };
-		A7A8E14D21ACB2D500CF37F6 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A8E14C21ACB2D500CF37F6 /* CollectionViewCell.swift */; };
+		A7A8E14B21ACB0CA00CF37F6 /* PubCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A8E14A21ACB0CA00CF37F6 /* PubCollectionViewController.swift */; };
+		A7A8E14D21ACB2D500CF37F6 /* PubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A8E14C21ACB2D500CF37F6 /* PubCollectionViewCell.swift */; };
 		A7FC4592230488FB00D2F8AA /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FC4590230488FB00D2F8AA /* ArticleViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +40,8 @@
 		A7A8E13521ACB09300CF37F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7A8E13821ACB09300CF37F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7A8E13A21ACB09300CF37F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7A8E14A21ACB0CA00CF37F6 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		A7A8E14C21ACB2D500CF37F6 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		A7A8E14A21ACB0CA00CF37F6 /* PubCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubCollectionViewController.swift; sourceTree = "<group>"; };
+		A7A8E14C21ACB2D500CF37F6 /* PubCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7FC4590230488FB00D2F8AA /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +63,6 @@
 				52A49D50EF93A9E62D5CF4A1 /* Pods-CollectionDemo.debug.xcconfig */,
 				33A548809BE197BBCA6D22F9 /* Pods-CollectionDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -97,8 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				A7A8E12E21ACB09200CF37F6 /* AppDelegate.swift */,
-				A7A8E14A21ACB0CA00CF37F6 /* CollectionViewController.swift */,
-				A7A8E14C21ACB2D500CF37F6 /* CollectionViewCell.swift */,
+				A7A8E14A21ACB0CA00CF37F6 /* PubCollectionViewController.swift */,
+				A7A8E14C21ACB2D500CF37F6 /* PubCollectionViewCell.swift */,
 				A7FC4590230488FB00D2F8AA /* ArticleViewController.swift */,
 				A7A8E13221ACB09200CF37F6 /* Main.storyboard */,
 				A7A8E13521ACB09300CF37F6 /* Assets.xcassets */,
@@ -230,9 +229,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7FC4592230488FB00D2F8AA /* ArticleViewController.swift in Sources */,
-				A7A8E14B21ACB0CA00CF37F6 /* CollectionViewController.swift in Sources */,
+				A7A8E14B21ACB0CA00CF37F6 /* PubCollectionViewController.swift in Sources */,
 				A7A8E12F21ACB09200CF37F6 /* AppDelegate.swift in Sources */,
-				A7A8E14D21ACB2D500CF37F6 /* CollectionViewCell.swift in Sources */,
+				A7A8E14D21ACB2D500CF37F6 /* PubCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

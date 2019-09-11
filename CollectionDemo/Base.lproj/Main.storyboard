@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-1041" y="87"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Pub Collection View Controller-->
         <scene sceneID="pBJ-iq-iJt">
             <objects>
-                <collectionViewController id="08k-7b-vTg" customClass="CollectionViewController" customModule="CollectionDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="08k-7b-vTg" customClass="PubCollectionViewController" customModule="CollectionDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" id="TW3-Te-az9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,7 +40,7 @@
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Cell" id="QBl-rD-yuU" customClass="CollectionViewCell" customModule="CollectionDemo" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Cell" id="QBl-rD-yuU" customClass="PubCollectionViewCell" customModule="CollectionDemo" customModuleProvider="target">
                                 <rect key="frame" x="20" y="10" width="335" height="275"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -91,22 +91,12 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sponsored Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHY-Bk-lHh">
-                                            <rect key="frame" x="245.5" y="4" width="85.5" height="11"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="11" id="19f-B7-xZc"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                            <color key="textColor" red="0.24289588730569944" green="0.24289588730569944" blue="0.24289588730569944" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailingMargin" secondItem="drU-Y2-xzv" secondAttribute="trailing" constant="12" id="7yN-Rw-tec"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="cDa-oe-smE" secondAttribute="trailing" constant="12" id="9jj-nr-7aZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="IHY-Bk-lHh" secondAttribute="trailing" constant="4" id="BYd-fL-9vh"/>
                                     <constraint firstItem="QjN-YD-JWn" firstAttribute="leading" secondItem="jSy-OW-5AF" secondAttribute="trailing" constant="2" id="GZE-Y7-xnc"/>
                                     <constraint firstItem="QjN-YD-JWn" firstAttribute="top" secondItem="cDa-oe-smE" secondAttribute="bottom" constant="21" id="Ouo-ya-9CK"/>
                                     <constraint firstItem="WRi-zD-GB1" firstAttribute="leading" secondItem="QBl-rD-yuU" secondAttribute="leadingMargin" constant="12" id="PqB-7a-LAa"/>
@@ -117,7 +107,6 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="WRi-zD-GB1" secondAttribute="trailing" constant="12" id="c0A-IG-Vi1"/>
                                     <constraint firstItem="WRi-zD-GB1" firstAttribute="top" secondItem="QBl-rD-yuU" secondAttribute="topMargin" priority="999" constant="12" id="jtw-hd-mDO"/>
                                     <constraint firstItem="ihj-gJ-4FS" firstAttribute="leading" secondItem="QBl-rD-yuU" secondAttribute="leadingMargin" constant="12" id="lt1-vf-vt8"/>
-                                    <constraint firstItem="IHY-Bk-lHh" firstAttribute="top" secondItem="QBl-rD-yuU" secondAttribute="top" constant="4" id="mvg-CF-Ajj"/>
                                     <constraint firstItem="cDa-oe-smE" firstAttribute="top" secondItem="WRi-zD-GB1" secondAttribute="bottom" constant="4" id="nA7-PA-PeL"/>
                                     <constraint firstItem="jSy-OW-5AF" firstAttribute="centerY" secondItem="ihj-gJ-4FS" secondAttribute="centerY" id="oAD-cF-HWW"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="drU-Y2-xzv" secondAttribute="bottom" priority="999" constant="12" id="p13-hi-lmx"/>
@@ -130,7 +119,6 @@
                                     <outlet property="authorImageView" destination="ihj-gJ-4FS" id="coM-69-Nef"/>
                                     <outlet property="authorNameLabel" destination="QjN-YD-JWn" id="3KB-kn-cQT"/>
                                     <outlet property="previewTextLabel" destination="cDa-oe-smE" id="R7d-9q-8pt"/>
-                                    <outlet property="sponsoredContentLabel" destination="IHY-Bk-lHh" id="tX6-zl-6Yw"/>
                                     <outlet property="titleLabel" destination="WRi-zD-GB1" id="R2x-Js-CuP"/>
                                 </connections>
                             </collectionViewCell>
