@@ -8,10 +8,6 @@
 import UIKit
 
 
-private let reuseIdentifier = "Cell"
-private let nativoSectionUrl = "publisher.com/home"
-
-
 class CollectionViewController: UICollectionViewController {
     
     var feedImgCache = Dictionary<URL, UIImage>()
@@ -38,7 +34,7 @@ class CollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
         // Dequeue the cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath);
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath);
         
         // Setup Cell
         if let articleCell: CollectionViewCell = cell as? CollectionViewCell{
@@ -82,6 +78,5 @@ class CollectionViewController: UICollectionViewController {
             }
         }
     }
-
 }
 
