@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import NativoSDK
 
-class PubCollectionViewCell: UICollectionViewCell {
+class PubCollectionViewCell: UICollectionViewCell, NtvAdInterface {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var previewTextLabel: UILabel!
@@ -15,10 +16,11 @@ class PubCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var adImageView: UIImageView!
     @IBOutlet weak var sponsoredContentLabel: UILabel!
+    @IBOutlet weak var sponsoredIndicator: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        self.sponsoredContentLabel.isHidden = true
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -29,4 +31,20 @@ class PubCollectionViewCell: UICollectionViewCell {
             ])
     }
     
+    
+    
+    func displaySponsoredIndicators(_ isSponsored: Bool) {
+        if isSponsored {
+            self.contentView.backgroundColor = UIColor.lightGray
+            self.sponsoredContentLabel.textColor = UIColor.white
+            self.sponsoredContentLabel.isHidden = false
+            print(self.sponsoredContentLabel.textColor)
+        } else {
+            self.contentView.backgroundColor = UIColor.white
+            self.sponsoredContentLabel.isHidden = true
+            print("not sponsored")
+        }
+    }
 }
+
+

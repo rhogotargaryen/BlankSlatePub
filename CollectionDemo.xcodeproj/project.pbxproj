@@ -205,16 +205,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CollectionDemo/Pods-CollectionDemo-frameworks.sh",
-				"${PODS_ROOT}/NativoSDK/Framework/NativoSDK.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-CollectionDemo/Pods-CollectionDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NativoSDK.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-CollectionDemo/Pods-CollectionDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

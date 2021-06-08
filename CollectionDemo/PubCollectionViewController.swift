@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import NativoSDK
 
 class PubCollectionViewController: UICollectionViewController {
     
@@ -20,6 +20,9 @@ class PubCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NativoSDK.enableTestAdvertisements(with: .native)
+        NativoSDK.setSectionDelegate(self, forSection: "nativo.net/mobiletest")
+        NativoSDK.registerReuseId("Cell", for: .native)
     }
 
     // MARK: UICollectionViewDataSource
@@ -34,12 +37,12 @@ class PubCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
         // Dequeue the cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath);
+        let cell = NativoSDK.dequeueCellWithAd(from: collectionView, usingReuseIdentifierIfNoAd: "Cell", forSection: "nativo.net/mobiletest", atPlacementIndex: indexPath, options: nil)
         
         // Setup Cell
         if let articleCell: PubCollectionViewCell = cell as? PubCollectionViewCell{
             articleCell.titleLabel.text = "Lorum Ipsom"
-            articleCell.authorNameLabel.text = "John"
+            articleCell.authorNameLabel.text = "Derek"
             articleCell.previewTextLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
             let imgUrl = URL.init(string: "https://images.unsplash.com/photo-1527664557558-a2b352fcf203?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4341976025ae49162643ccdb47a72a4d&w=1000&q=80")
             let authorUrl = URL.init(string: "https://www.logolynx.com/images/logolynx/6a/6aa959dca0e6c62f593e94e02332a67f.jpeg")
@@ -80,3 +83,23 @@ class PubCollectionViewController: UICollectionViewController {
     }
 }
 
+extension PubCollectionViewController: NtvSectionDelegate {
+    
+    func section(_ sectionUrl: String, needsReloadDatasourceAtLocationIdentifier identifier: Any, forReason reason: String) {
+        self.collectionView?.reloadData()
+    }
+    func section(_ sectionUrl: String, shouldPlaceAdAtIndex index: IndexPath) -> Bool {
+        let adStartRow = 1
+        let adInterval = 3
+        if index.row % adInterval == adStartRow {
+            return true
+        }
+        return false
+    }
+    func section(_ sectionUrl: String, needsDisplayLandingPage sponsoredLandingPageViewController: (UIViewController & NtvLandingPageInterface)?) {
+        
+    }
+    func section(_ sectionUrl: String, needsDisplayClickoutURL url: URL) {
+        
+    }
+}
