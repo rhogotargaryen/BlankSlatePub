@@ -6,6 +6,6 @@ target 'CollectionDemo' do
   use_frameworks!
 
   # Pods for CollectionDemo
-  pod 'NativoSDK', '~> 5.0.0'
+  pod 'NativoSDK', '~> 6.0.0'
 
 end
