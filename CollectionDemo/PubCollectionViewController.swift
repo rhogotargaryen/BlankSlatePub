@@ -8,7 +8,10 @@
 import UIKit
 import NativoSDK
 
+//NativoSDK.enableTestAdvertisements(with: NtvTestAdType)
 class PubCollectionViewController: UICollectionViewController {
+
+
     
     var feedImgCache = Dictionary<URL, UIImage>()
     
@@ -19,6 +22,7 @@ class PubCollectionViewController: UICollectionViewController {
     }
 
     override func viewDidLoad() {
+        self.collectionView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "nativocell")
         super.viewDidLoad()
         NativoSDK.enableTestAdvertisements(with: .native)
         NativoSDK.setSectionDelegate(self, forSection: "nativo.net/mobiletest")
@@ -34,13 +38,34 @@ class PubCollectionViewController: UICollectionViewController {
         return 25
     }
 
+ 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
         // Dequeue the cell
-        let cell = NativoSDK.dequeueCellWithAd(from: collectionView, usingReuseIdentifierIfNoAd: "Cell", forSection: "nativo.net/mobiletest", atPlacementIndex: indexPath, options: nil)
+        // let cell = NativoSDK.dequeueCellWithAd(from: collectionView, usingReuseIdentifierIfNoAd: "Cell", forSection: "nativo.net/mobiletest", atPlacementIndex: indexPath, options: nil)
         
         // Setup Cell
-        if let articleCell: PubCollectionViewCell = cell as? PubCollectionViewCell{
+        var didGetNativoAdFill : Bool = false
+        var nativoCell : UICollectionViewCell!
+        if isNativoCellPath(indexPath) {
+            let nativoReuseId = "nativocell" // use seperate reuse id for Nativo ads
+            nativoCell = collectionView.dequeueReusableCell(withReuseIdentifier: nativoReuseId, for: indexPath)
+          
+            // The response will let you know if the view was filled.
+            didGetNativoAdFill = NativoSDK.placeAd(in: nativoCell,
+                                                   atLocationIdentifier: indexPath,
+                                                   inContainer: collectionView,
+                                                   forSection: "nativo.net/mobiletest")
+        }
+
+        if didGetNativoAdFill {
+            return nativoCell
+        } else {
+            // Create cell as normal
+            let articleCell : PubCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PubCollectionViewCell
+
+            // Get the adjusted index path so we account for possible ad displacement in datasource
+
             articleCell.titleLabel.text = "Lorum Ipsom"
             articleCell.authorNameLabel.text = "Derek"
             articleCell.previewTextLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
@@ -52,10 +77,11 @@ class PubCollectionViewController: UICollectionViewController {
             getAsyncImage(forUrl: authorUrl!) { (authorimg) in
                 articleCell.authorImageView.image = authorimg
             }
+            return articleCell
         }
-        
-        return cell
     }
+        
+
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let articleViewController = ArticleViewController()
@@ -82,20 +108,26 @@ class PubCollectionViewController: UICollectionViewController {
         }
     }
 }
+    
+func isNativoCellPath(_ index: IndexPath) -> Bool {
+    let adStartRow = 1
+    let adInterval = 3
+    if index.row % adInterval == adStartRow {
+        return true
+    }
+    return false
+}
 
 extension PubCollectionViewController: NtvSectionDelegate {
     
-    func section(_ sectionUrl: String, needsReloadDatasourceAtLocationIdentifier identifier: Any, forReason reason: String) {
-        self.collectionView?.reloadData()
+    func section(_ sectionUrl: String, needsPlaceAdInViewAtLocation identifier: Any) {
+        collectionView.reloadData()
     }
-    func section(_ sectionUrl: String, shouldPlaceAdAtIndex index: IndexPath) -> Bool {
-        let adStartRow = 1
-        let adInterval = 3
-        if index.row % adInterval == adStartRow {
-            return true
-        }
-        return false
+    
+    func section(_ sectionUrl: String, needsRemoveAdViewAtLocation identifier: Any) {
+        collectionView.reloadData()
     }
+    
     func section(_ sectionUrl: String, needsDisplayLandingPage sponsoredLandingPageViewController: (UIViewController & NtvLandingPageInterface)?) {
         
     }
@@ -103,3 +135,7 @@ extension PubCollectionViewController: NtvSectionDelegate {
         
     }
 }
+
+
+/*
+ */
