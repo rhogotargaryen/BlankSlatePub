@@ -9,6 +9,7 @@ import UIKit
 import NativoSDK
 
 //NativoSDK.enableTestAdvertisements(with: NtvTestAdType)
+
 class PubCollectionViewController: UICollectionViewController {
 
 
@@ -23,10 +24,13 @@ class PubCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         self.collectionView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "nativocell")
+        
         super.viewDidLoad()
         NativoSDK.enableTestAdvertisements(with: .native)
+        NativoSDK.enableDevLogs()
         NativoSDK.setSectionDelegate(self, forSection: "nativo.net/mobiletest")
         NativoSDK.registerReuseId("Cell", for: .native)
+        NativoSDK.register(UINib(nibName: "SponsoredLandingPage", bundle: nil), for: .landingPage)
     }
 
     // MARK: UICollectionViewDataSource
@@ -129,7 +133,9 @@ extension PubCollectionViewController: NtvSectionDelegate {
     }
     
     func section(_ sectionUrl: String, needsDisplayLandingPage sponsoredLandingPageViewController: (UIViewController & NtvLandingPageInterface)?) {
-        
+        if let landingPage = sponsoredLandingPageViewController {
+            self.navigationController?.pushViewController(landingPage, animated: true)
+        }
     }
     func section(_ sectionUrl: String, needsDisplayClickoutURL url: URL) {
         
